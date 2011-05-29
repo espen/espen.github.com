@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Web Sockets</title>
+
+	<style type="text/css">
+	  html { height: 100%; }
+	  body { height: 100%; margin: 0px; padding: 0px; }
+	  #people { float: left; width: 250px; height: 250px; overflow: scroll;}
+	  #map_canvas { height: 250px;width:250px;float: right;}
+	</style>
+	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+	<script>
+	var map;
+	var people = new WebSocket("ws://209.20.94.108:8080");
+	people.onopen = function(data) {
+		console.log("starting up....");
+	}
+	people.onmessage = function(data) {
+		console.log(data.data);
+		var person = JSON.parse( data.data );
+		addPerson( person );
+		peopleData = localStorage.getItem("people") ? JSON.parse( localStorage.getItem("people") ) : new Array();
+		peopleData.push( person );
+		localStorage.setItem("people", JSON.stringify( peopleData) );
+	}
+	
+function addPerson (person) {
+	document.getElementById("people").innerHTML = person.name + "<br>" + document.getElementById("people").innerHTML;
+
+	var latlng = new google.maps.LatLng(person.latitude, person.longitude);
+	var marker = new google.maps.Marker({
+			      position: latlng, 
+			      map: map, 
+			      title: person.name
+			  });
+}	
+	
+	</script>
+</head>
+<body onload="initialize();">
+	<header>
+		<h1>Snakkes</h1>
+	</header>
+	
+	<section>
+		<form action="#" onsubmit="return false;" id="person_form">
+			<label for="name">Navn:</label> 
+			<input type="text" id="name">
+			<label for="latitude">Latitude:</label> 
+			<input type="text" id="latitude">
+			<label for="longitude">Longitude:</label> 
+			<input type="text" id="longitude">
+			<input type="submit" id="add" value="Lagre person">
+		</form>
+		
+		<div id="people"></div>
+		<div id="map_canvas"></div>
+	</section>
+
+<script>
+
+function initialize() {
+	
+	document.getElementById("person_form").addEventListener( "submit", 
+		function() {
+			console.log("hei");
+			console.log( document.getElementById("name").value );
+			var person = JSON.stringify( {
+				name: document.getElementById("name").value,
+				latitude: document.getElementById("latitude").value,
+				longitude: document.getElementById("longitude").value
+			} );
+			console.log( person );
+			people.send( person );
+			return false;
+		}, false );
+	
+	if ( window.navigator ) {
+		console.log("jeg har geolokasjon");
+		navigator.geolocation.getCurrentPosition(
+			function(loc) {
+				document.getElementById("latitude").value = loc.coords.latitude;
+				document.getElementById("longitude").value = loc.coords.longitude;
+				
+				var latlng = new google.maps.LatLng(loc.coords.latitude, loc.coords.longitude);
+				var myOptions = {
+			      zoom: 8,
+			      center: latlng,
+			      mapTypeId: google.maps.MapTypeId.ROADMAP
+			    };
+				map = new google.maps.Map(document.getElementById("map_canvas"),
+			        myOptions);
+				
+				console.log(loc);
+				if ( localStorage.getItem("people") ) {
+					peopleData = JSON.parse( localStorage.getItem("people") );
+					for(var i = 0;i<peopleData.length;i++) {
+						addPerson( peopleData[i] );
+					}
+				}
+				
+			},
+			function(err) {
+				console.log( err );
+			}
+		);
+	}
+	else {
+		alert("Du må ha geolokasjon");
+	}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Bruk HTML5 nå</title>
+	<meta http-equiv="description" content="Bruk HTML5 nå">
+	<meta http-equiv="keywords" content="html5, css3, standards, w3c, web">
+	<link rel="stylesheet" type="text/css" href="all.css">
+	<!--[if IE]>
+	<script type="text/javascript">
+	 document.createElement("header");
+	 document.createElement("footer");
+	 document.createElement("nav");
+	 document.createElement("article");
+	 document.createElement("section");
+	</script>  
+	<![endif]-->
+</head>
+<body>
+<div id="container">
+
+<header>
+	Skrevet av Espen Antonsen.
+</header>
+<article>
+<h1>Bruk HTML5 nå</h1>
+
+<p><strong>HTML5 bør benyttes allerede i dag</strong> med tanke på bakoverkompatibiliteten som eksisterer i formatet og de nye mulighetene som tilbys. Ekstra funksjonalitet som offline lagring og geolocation kan fint inkluderes på en webside og skjules for nettlesere uten støtte. Alle nye funksjoner støtter også alternativ fallback enten spesifisert eksplisitt som med &lt;video&gt; eller det håndteres automatisk av nettleseren som med &lt;input type="email"&gt;. Doctypen i seg selv er et glimrende eksempel. &lt;!doctype html&gt; blir tolket av alle browsere og trigger alltid standard-mode i browsere (inkludert IE6) som gjør det enklere å skrive cross-browser CSS. Og ikke minst; det er faktisk mulig å skrive den uten copy/paste.</p>
+
+<p>Dessverre så er det slik at det er mange utviklere og personer involvert i beslutninger om web i Norge som har et alt for sløvt forhold til standarder.
+	Mange ser ikke ulempene ved bruk av alternative proprietære teknologier som <a href="http://www.digi.no/831790/nei-til-innelaasing-paa-weben">Thomas Hansen utdyper farene ved i sitt innlegg om "ActiveX 2.0"</a>. 
+	Istedenfor å fortsette hans korstog mot Flash-elskerne i reklamebransjen og de teknologisk uvitende mellomlederne som har vært på seminar hos Microsoft og Adobe, så vil jeg heller fremheve fordelene med HTML5. 
+	Det vil være behov for slike plugins til visse typer funksjonalitet, men med HTML5 gjør man mye av denne bruken overflødig. 
+	I denne sammenheng kan det også nevnes at innhold utviklet i Flash er vanskeligere for søkemotorer å finne frem til, mindre tilgjengelig for brukere med særstilte behov, lite brukervennlige samt at mange, inkluderte undertegnende, misliker (og blokkerer) Flash grunnet treghet og systemfeil som ofte forekommer i Flash.</p>
+
+<h2>Det du kan bruke nå</h2>
+
+<h3>Kjekke skjemakontrollere</h3>
+
+<p>Bruker du iPhone har du kanskje lagt merke til bruk av forskjellig visninger på det visuelle tastaturet. 
+	Hver visningstype kan aktiveres med de nye <a href="http://diveintohtml5.org/forms.html">input element typene url, number og email</a>. 
+	Det finnes også flere andre typer slik som for eksempel: image, date, time og range. 
+	Og hva hvis nettleseren ikke har støtte? Joda; fallback er visning av type tekst. 
+	For typen e-mail resulterer det i at det visuelle tastaturet på iPhone endres til bla. å inkludere alfakrøll.
+	<img src="input_type_email.jpg" alt="Input type email på iPhone" class="clear block center givemeair">
+	
+	For typen number så vil man i Opera få en "spinbox" med knapper for å øke eller senke tallverdien og et tastatur med tall på iPhone. Samtidig vil alle andre nettlesere tolke et slikt felt som et vanlig tekst-felt.
+	</p>
+
+<h3>Ny struktur</h3>
+<img src="structure-html5.gif" alt="HTML5 nye semantiske elementer" class="givemeair">
+<p>Semantikk har alltid vært en del av oppbygningen av et HTML-dokument, i HTML5 fortsetter man videre med dette og får enda mer spesifiserte elementer. 
+	Istedenfor generiske &lt;div&gt; elementer har vi nå fått blant annet: &lt;header&gt;, &lt;nav&gt;, &lt;article&gt;, &lt;section&gt;, &lt;aside&gt; og &lt;footer&gt;. 
+	Foreløpig så vil bruken av disse kun medføre kudos fra undertegnende og andre webnerds, men de fleste nettlesere tolker disse nye elementene som en vanlig &lt;div&gt; så det er ingen ulemper ved å være bleeding-edge. Det eneste man trenger å gjøre er å spesifisere de som block-elementer i CSS slik at de oppfører seg som en &lt;div&gt;. I tillegg trenger man også et par <a href="http://www.smashingmagazine.com/2009/07/16/html5-and-the-future-of-the-web/">JavaScript-hacks til å tilfredsstille vår venn Internet Explorer</a>.</p>
+
+<h3>CSS3</h3>
+<p>I tillegg til HTML5 skjer det også mye spennende med CSS3 som allerede i dag kan benyttes. 
+	For typografinerder er det nok <a href="http://www.css3.info/preview/web-fonts-with-font-face/">@Font-face</a> som frister mest, med denne kan man bruke fonter som ikke brukeren har installert. 
+	Fonten som er definert blir så lastet ned av nettleseren. Safari, Chrome, Firefox og Opera har allerede støtte for dette. 
+	Annet snacks for designere er avrundede hjørner som gjør at man slipper å bruke en samling av enkeltbilder for å oppnå denne effekten.</p>
+
+<h2>Det du kan bruke på iPhone</h2>
+
+<h3>Lagre data lokalt - bruk nettsider offline</h3>
+<p>Mailklienten på iPhone er ikke helt optimal og det hender derfor ofte at jeg starter Safari for å benytte Gmail sin HTML5-applikasjon. 
+	I tillegg til å vise "conversations" og at den er en generelt sett meget god applikasjon så benytter den også HTML5 lokal lagring i database samt <a href="http://developer.apple.com/safari/library/documentation/iPhone/Conceptual/SafariJSDatabaseGuide/OfflineApplicationCache/OfflineApplicationCache.html#//apple_ref/doc/uid/TP40007256-CH7-SW1">manifest cache for å lagre statiske filer lokalt</a>. 
+	Stopper NSB i en tunnel og jeg blir offline har jeg allikevel tilgang til mail som ligger i innboksen. 
+	Google er virkelig kroneksempelet på bruk av HTML5 i mobile applikasjoner. Mange av deres tjeneste har meget gode og brukervennlige mobile grensesnitt 
+	som utnytter lokal lagring, offline mulighet og andre nyttige HTML5-funksjoner.</p>
+<p>For å lagre data lokalt har man to muligheter: den ene er en enkel <a href="http://developer.apple.com/safari/library/documentation/iPhone/Conceptual/SafariJSDatabaseGuide/Name-ValueStorage/Name-ValueStorage.html">key/value lagring</a> mens den andre er en litt mer <a href="http://developer.apple.com/safari/library/documentation/iPhone/Conceptual/SafariJSDatabaseGuide/UsingtheJavascriptDatabase/UsingtheJavascriptDatabase.html#//apple_ref/doc/uid/TP40007256-CH3-SW2">avansert relasjonsdatabase</a>. 
+	Man kan med andre ord med sistnevnte speile mye av komplisert datastruktur som man har på serveren.</p>
+
+<h3>Finn brukeren med geolocation</h3>
+<p><img src="google_latitude_permission_small.png" alt="" class="right">
+
+	Med GPS og Safari/MobileWebKit har iPhone mulighet til å hente brukerens lokasjon. 
+	Tjenesten <a href="http://www.google.com/latitude/">Google Latitude</a> har tatt dette i bruk og man får presentert sin og sine venners lokasjon på et kart. 
+	Google sin mobile søkeside benytter også dette slik at man kan få relevante treff i forhold til nåværende lokasjon. 
+	I eksempelet på bildene har jeg søkt etter 'tapas' og får opp nærmeste restauranter hvor jeg kan nyte albondigas og San Miguel.</p>
+<img src="google_latitude_position.jpg" alt="">
+<img src="google_search_local.jpg" alt="">
+
+
+<h2>Det du kan eksperimentere med</h2>
+
+<h3>Video uten Flash</h3>
+<p>Takket være den glimrende <a href="http://rentzsch.github.com/clicktoflash/">Click2Flash plugin'en</a> til Safari slipper jeg unna det meste som er <em>ondt</em> på internett. 
+	Og takket være <a href="http://youtube-global.blogspot.com/2010/01/introducing-youtube-html5-supported.html">YouTube sin nylig innførte bruk av &lt;video&gt;</a> kan jeg se morsomme videoklipp der uten å aktivere Flash. 
+	Dette er altså noe du egentlig kan benytte i dag men foreløpig er det kun Safari og Chrome som støtter dette hos YouTube, det er derfor nødvendig med en Flash-player for andre nettlesere (Mozilla har ikke <a href="http://weblogs.mozillazine.org/roc/archives/2010/01/video_freedom_a.html">implementert den proprietære H.264 codec'en</a> som YouTube benytter).</p>
+<img src="youtube-video.png" alt="Video element hos YouTube" class="givemeair">
+
+<h3>Opplasting av flere filer samtidig</h3>
+<p>En unødvendig og kjip begrensing med filopplasting i tidligere versjoner av HTML var at det kun var mulig å laste opp en fil og at man ikke hadde noen programmatisk kontroll over prosessen. 
+	Dette har flere løst med en kombinasjon av Flash og JavaScript men nå kommer det altså i HTML5. Og det er så enkelt som å <a href="http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html">spesifisere multiple i input-elementet</a>.</p>
+
+<h3>Ajax 2.0: Web Sockets</h3>
+<p>Jeg implementerte Ajax i <a href="http://24sevenoffice.no">24SevenOffice</a> i 2004. 
+	Det var en revolusjon spesielt for dem som jobber i samme grensesnitt hele dagen. 
+	Men et problem med Ajax er at man kun kan kontakte nettleseren ved definerte tidspunkt eller manuelt av brukeren selv, altså 'push'. 
+	Det er riktignok måter å oppnå 'pull' (Comet) på i nettleseren i dag men med HTML5 blir dette standardisert og <a href="http://www.kaazing.org/confluence/display/KAAZING/What+is+an+HTML+5+WebSocket">tilgjengelig på en mye enklere måte med Web Sockets</a>.
+	Dette vil være glimrende for chat-løsninger og live oppdateringer ala <a href="http://vglive.no/">VG Live</a>.
+</p>
+
+<h3>Er JavaScript tregt? La Web Workers gjør jobben</h3>
+<p>Det er riktignok få nettsider som gjør tunge beregninger i JavaScript men for dem som har behov for det er det nå mulig å sette bort slike operasjoner til Web Workers. 
+	Nettsiden og det vanlige javascriptet vil da fortsette som normalt mens kode som kjøres som Web Worker vil kjøre i en egen tråd som en bakgrunnsprosess.
+	Det betyr at tunge prosesser ikke vil <a href="http://ejohn.org/blog/web-workers/">hindre brukerens opplevelse av nettsiden</a>.
+	</p>
+
+<h3>Annet snacks</h3>
+<p>
+<a href="http://carsonified.com/blog/dev/html-5-dev/how-to-draw-with-html-5-canvas/">&lt;canvas&gt;</a> kan sammen med &lt;video&gt; og &lt;audio&gt; overta funksjoner som Flash benyttes til i dag.
+<a href="http://www.w3.org/TR/2008/WD-html5-20080122/#dnd">HTML5 definerer også standard for "dra og slipp"</a>.
+</p>
+
+<h3>Hold deg oppdatert</h3>
+<ul>
+	<li><a href="http://en.wikipedia.org/wiki/Comparison_of_layout_engines_(HTML5)">Oversikt over implementasjon av HTML5-elementer</a></li>
+	<li><a href="http://wiki.whatwg.org/wiki/Implementations_in_Web_browsers">WHATWG sin oversikt over nettleserstøtte av HTML5</a></li>
+	<li><a href="http://diveintohtml5.org/">"Dive Into HTML5" - en bok om HTML5</a></li>
+	<li><a href="http://www.w3.org/TR/html5/">HTML5 Specification - W3C</a></li>
+	<li><a href="http://htmlfive.appspot.com/">HTML5 demoer</a></li>
+</ul>
+
+<br><br>
+
+<p>
+<strong><a href="http:/twitter.com/EspenAntonsen">Espen Antonsen</a></strong> har over 10 års erfaring med utvikling av web-applikasjoner. 
+Tidligere en av grunderne i <a href="http://24sevenoffice.no">24SevenOffice</a> og komiteemedlem i <a href="http://openajax.org">OpenAjax Alliance</a>, jobber nå som freelancer samt med <a href="http://makeplans.no">MakePlans, ett system for online timebestilling og booking av ressurser</a>.
+</p>
+
+</article>
+
+</div>
+
+</body>
+</html>
+
+

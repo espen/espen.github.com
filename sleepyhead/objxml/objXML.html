@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/tr/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript" src="objXMLSniffer.js"></script>
+
+<script type="text/javascript">
+var oXMLHTTPRequest, oDOMDocument, oClientVer;
+function doParsing() {
+	var str = '';
+	oClientVer = new XMLClientVer();
+	str += 'Microsoft XML Parser: <em>' + oClientVer.MSXMLParser + '</em><br>';	
+	str += 'Microsoft XML Parser version: <em>' + oClientVer.MSXMLParserVer + '</em><br>';	
+	str += 'Mozilla Implementation: <em>' + oClientVer.mozImp + '</em><br>';
+	str += 'W3C DOM Document: <em>' + oClientVer.W3CDOMDocument + '</em><br>';
+	str += 'XMLHTTPRequest: <em>' + oClientVer.XMLHTTPRequest + '</em><br>';
+	document.getElementById('debugData').innerHTML = str;
+
+	oXMLHTTPRequest = newObjXML('XMLHTTPRequest');
+	oXMLHTTPRequest.onreadystatechange = writeHTML;
+	oXMLHTTPRequest.open('GET','test.html',true);
+	oXMLHTTPRequest.send('');	
+	
+	oDOMDocument = newObjXML('DOMDocument');	
+	oDOMDocument.onreadystatechange = writeXML;
+	oDOMDocument.async = true;
+	oDOMDocument.validateOnParse = false;
+	oDOMDocument.resolveExternals = false;
+	oDOMDocument.load('test.xml');
+
+}
+
+function writeHTML() {
+	if(oXMLHTTPRequest.readyState == 4) {
+		document.getElementById('testHTML').innerHTML = '<a href="test.html" style="font-weight:bold;">test.html (click to open):</a> ' + oXMLHTTPRequest.responseText;
+	}
+}
+
+function writeXML() {
+	if(oDOMDocument.readyState != 4) {
+		return false;
+	}
+	document.getElementById('testXML').innerHTML = '<a href="test.xml" style="font-weight:bold;">test.xml first node:</a> ' + oDOMDocument.documentElement.nodeName;
+}
+
+</script>
+
+<style type="text/css">
+#debuData, #testHTML, #testXML {
+	margin-top: 20px;
+}
+</style>
+</head>
+<body>
+
+<button onclick="doParsing();">Execute script</button><br><br>
+
+<div id="debugData">
+</div>
+
+<div id="testHTML"></div>
+
+<div id="testXML"></div>
+
+</body>
+</html>
