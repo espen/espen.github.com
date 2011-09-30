@@ -1,9 +1,32 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
+	<meta charset="utf-8">
+	<title>Kontorsamlingen</title>
+	<style>
+	section#main {
+		float: left;
+	}
+	section#booking {
+		float: right;
+		width: 400px;
+	}
+	</style>
 </head>
 <body>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.6/jquery-ui.js"></script>
-<script type="text/javascript" src="http://torggatasquash.makeplans.dev:3000/bookings/new.js?jquery=0&amp;jquerui=0"></script>
+<header><h1>Kontorsamlingen</h1></header>
+
+<section id="main">
+	<article>
+		Vi har en samling med kontoret. Du må booke i kalenderen til høyre.
+		<br><br>
+		<img src="http://www.hemmy.net/images/travel/googlezurich02.jpg">
+	</article>
+</section>
+<section id="booking">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+<script type="text/javascript" src="http://torggatasquash.makeplans.dev/bookings.js?jquery=0&amp;jquerui=0"></script>
+</section>
 </body>
 </html>
